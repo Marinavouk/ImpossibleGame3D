@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
         transform.Translate(0, 0, speed);//it moves the object thats attached to
         
         bool isKeyWasJustPressed = Input.GetKeyDown(KeyCode.Space);
-        if (isKeyWasJustPressed)
+        if (isKeyWasJustPressed)//if true then jumps
         {
             Rigidbody rb = GetComponent<Rigidbody>(); 
-            rb.AddForce(0, jump, 0);
+            rb.AddForce(0, jump, 0); 
         }
         
     }
