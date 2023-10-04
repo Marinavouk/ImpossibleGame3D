@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0.05f; //public so its not visible an don the 
-    //top so it applies otherwise it doesnt work
+    //top so it applies otherwise it doesnt work//Field
     
     // Start is called before the first frame update
     void Start()
