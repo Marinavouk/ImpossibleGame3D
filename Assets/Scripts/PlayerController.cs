@@ -18,10 +18,11 @@ public class PlayerController : MonoBehaviour
         {
             Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>(); //finds the component 
             rigidBody.AddForce(0, jumpForce, 0);
+            rigidBody.angularVelocity = new Vector3(2, 0, 0);
 
         }
 
-        transform.Translate(0, 0, speed); //it moves the object thats attached to}
+        transform.Translate(0, 0, speed, Space.World); //it moves the object thats attached to}
     }
 
     bool IsTouchingGround()
