@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsTouchingGround())
         {
             Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>(); //finds the component 
             rigidBody.AddForce(0, jumpForce, 0);
@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(0, 0, speed); //it moves the object thats attached to}
+    }
+
+    bool IsTouchingGround()
+    {
+        int layerMask = LayerMask.GetMask("Ground");
+        return Physics.CheckBox(transform.position, 
+            transform.lossyScale / 1.99f, transform.rotation, layerMask);
     }
 
     private void FixedUpdate()
