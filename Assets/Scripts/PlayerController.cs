@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        {
+            this.transform.Translate(Input.GetAxis("Horizontal"),0,0);
+        }
+        
+        
         if (Input.GetButtonDown("Jump") && IsTouchingGround())
         {
             Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>(); //finds the component 
