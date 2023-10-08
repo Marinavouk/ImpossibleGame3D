@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 300;
-    public float speed = 0.05f; //public so its not visible an don the 
+    public float speed = 0.05f; //public so its not visible and on the 
     //top so it applies otherwise it doesnt work//Field
 
     // Start is called before the first frame update
@@ -27,14 +27,15 @@ public class PlayerController : MonoBehaviour
 
     bool IsTouchingGround()
     {
-        int layerMask = LayerMask.GetMask("Ground");
+        int layerMask = LayerMask.GetMask("Ground");//if player touching the ground
         return Physics.CheckBox(transform.position, 
-            transform.lossyScale / 1.99f, transform.rotation, layerMask);
+            transform.lossyScale / 1.99f, transform.rotation, layerMask);//a bit less then grounf so it collides
     }
 
     private void FixedUpdate()
     {
-        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();//since there is not velocity on 
+        //new version. finds the velocity and adds the value
         if (rigidbody.velocity.y < -1f)
         {
             rigidbody.AddForce(0, -1, 0);
