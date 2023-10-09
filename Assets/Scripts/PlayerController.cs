@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int targetFrameRate = 50;
     public float jumpForce = 300;
     public float speed = 0.05f; //public so its not visible and on the 
     //top so it applies otherwise it doesnt work//Field
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
         }
         
         
-        if (Input.GetButtonDown("Jump") && IsTouchingGround())
+        if (Input.GetButton("Jump") && IsTouchingGround())
         {
             Jump();
         }
