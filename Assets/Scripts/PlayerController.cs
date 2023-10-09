@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int targetFrameRate = 50;
     public float jumpForce = 300;
     public float speed = 0.05f; //public so its not visible and on the 
     //top so it applies otherwise it doesnt work//Field
 
     // Start is called before the first frame update
+
 
     // Update is called once per frame
     void Update()
@@ -21,13 +23,17 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetButtonDown("Jump") && IsTouchingGround())
         {
-            Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>(); //finds the component 
-            rigidBody.AddForce(0, jumpForce, 0);
-            rigidBody.angularVelocity = new Vector3(2, 0, 0);
-
+            Jump();
         }
 
-        transform.Translate(0, 0, speed, Space.World); //it moves the object thats attached to}
+        //transform.Translate(0, 0, speed, Space.World); //it moves the object thats attached to}
+    }
+
+    private void Jump()
+    {
+        Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>(); //finds the component 
+        rigidBody.AddForce(0, jumpForce, 0);
+        rigidBody.angularVelocity = new Vector3(2, 0, 0);
     }
 
     bool IsTouchingGround()
@@ -45,5 +51,8 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.AddForce(0, -1, 0);
         }
+
+        rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, speed);
     }
+    
 }
