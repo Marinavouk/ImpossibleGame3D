@@ -5,18 +5,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private float horizontalInput ;
+    private Vector3 movedirection;
+    public float sideSpeed = 3f;
+   
     public float jumpForce = 300;
     public float speed = 0.05f; //public so its not visible and on the 
     //top so it applies otherwise it doesnt work//Field
 
     // Start is called before the first frame update
 
+    public void Move()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        movedirection = new Vector3(horizontalInput , 0 ,0);
 
+    }
     // Update is called once per frame
     void Update()
     {
         {
-            this.transform.Translate(Input.GetAxis("Horizontal"),0,0);
+            Move();
+            Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+            rigidbody.velocity = new Vector3(movedirection.x * sideSpeed, rigidbody.velocity.y, speed );
         }
         
         
@@ -27,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         //transform.Translate(0, 0, speed, Space.World); //it moves the object thats attached to}
     }
+   
 
     private void Jump()
     {
